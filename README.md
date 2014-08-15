@@ -13,3 +13,10 @@ I explained to him the basics of that laptop which he seemed to understand. Thou
 4. He agreed to Python rather grudgingly for he wanted to start with iPhone programming. But that's the next thing and he agreed to do that.
 5. We gave May 2015 as the date by which we'll finish the book.
 6. We read up to "Starting Python with IDLE" on the first day. Then he was hungry :-). So, we stopped.
+
+## Day 1: Aug 14, 2014
+1. Started reading from "Starting Python with IDLE". He is using IDLE to play with the commands in the book.
+2. He is also interested in trying out his own commands. He is having fun.
+3. He tried division 10/2. Then i asked him to try 11/2 and 11.0 / 2. He finds the results funny :)
+4. He wrote his first program in Python and ran it. Was very happy. 
+5. We stopped at "If something goes wrong".
