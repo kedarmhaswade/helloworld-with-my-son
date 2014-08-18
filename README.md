@@ -20,3 +20,10 @@ I explained to him the basics of that laptop which he seemed to understand. Thou
 3. He tried division 10/2. Then i asked him to try 11/2 and 11.0 / 2. He finds the results funny :)
 4. He wrote his first program in Python and ran it. Was very happy. 
 5. We stopped at "If something goes wrong".
+
+## Day 2: Aug 18, 2014
+1. He has already read till Chapter 3 - "Operators"! Looks like he understands what variables are.
+2. He likes to try new statements on his own. He tried many examples of += and -= by himself. He was talking about loops. Looks like he understands the loop concept, but does not know how to write a loop yet.
+3. We also tried operators *=, /= and **=. He was quite excited.
+4. Now trying out some programs at the end of the chapter.
+5. We stopped after doing area and perimeter program at the end of chapter 3.
