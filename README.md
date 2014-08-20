@@ -27,3 +27,7 @@ I explained to him the basics of that laptop which he seemed to understand. Thou
 3. We also tried operators *=, /= and **=. He was quite excited.
 4. Now trying out some programs at the end of the chapter.
 5. We stopped after doing area and perimeter program at the end of chapter 3.
+
+# Day 3: Aug 19, 2014
+1. Writing the the program to convert celcius to farenheit. He wrote both C to F and F to C by asking user which conversion the user wants.
+2. Writing program to calculate travel time. We are done with chapter 3.
