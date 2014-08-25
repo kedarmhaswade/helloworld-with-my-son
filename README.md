@@ -38,3 +38,7 @@ I explained to him the basics of that laptop which he seemed to understand. Thou
 3. I am not sure if data types, integer division is completely clear to him. Let's see.
 4. We stopped at "Test your knowledge - question 3" at the end of chapter 4.
 
+# Day 5: Aug 22, 2014
+1. He was able to solve the challenging question at the end of chapter 4 with a hint. He made a program to round off numbers.
+2. Started chapter 5.
+3. He asked an interesting question today - "How to make printer print something using Python?"
