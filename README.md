@@ -21,7 +21,30 @@ I explained to him the basics of that laptop which he seemed to understand. Thou
 4. He wrote his first program in Python and ran it. Was very happy. 
 5. We stopped at "If something goes wrong".
 
-## Day 10: September 9, 2014
+## Day 2: Aug 18, 2014
+1. He has already read till Chapter 3 - "Operators"! Looks like he understands what variables are.
+2. He likes to try new statements on his own. He tried many examples of += and -= by himself. He was talking about loops. Looks like he understands the loop concept, but does not know how to write a loop yet.
+3. We also tried operators *=, /= and **=. He was quite excited.
+4. Now trying out some programs at the end of the chapter.
+5. We stopped after doing area and perimeter program at the end of chapter 3.
+
+# Day 3: Aug 19, 2014
+1. Writing the the program to convert celcius to farenheit. He wrote both C to F and F to C by asking user which conversion the user wants.
+2. Writing program to calculate travel time. We are done with chapter 3.
+
+# Day 4: Aug 20, 2014
+1. Starting chapter 4 now. They have explained data types int, float and str.
+2. Apoorv is confused about why 0.1 + 0.2 is 0.3000000000000004. The explanation in the book is not satisfying for him.
+3. I am not sure if data types, integer division is completely clear to him. Let's see.
+4. We stopped at "Test your knowledge - question 3" at the end of chapter 4.
+
+# Day 5: Aug 22, 2014
+1. He was able to solve the challenging question at the end of chapter 4 with a hint. He made a program to round off numbers.
+2. Started chapter 5.
+3. He asked an interesting question today - "How to make printer print something using Python?"
+
+
+## Day 10: September 9, 2014 (Skipping a few)
 
 We decided that he'd do computers and Python on Tuesdays (during the weekdays). I, as a parent, (almost) hate homework (but that's a topic for the other day) and he unfortunately has to complete it, that's why we decided on Tuesday.
 
