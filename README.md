@@ -20,3 +20,24 @@ I explained to him the basics of that laptop which he seemed to understand. Thou
 3. He tried division 10/2. Then i asked him to try 11/2 and 11.0 / 2. He finds the results funny :)
 4. He wrote his first program in Python and ran it. Was very happy. 
 5. We stopped at "If something goes wrong".
+
+## Day 10: September 9, 2014
+
+We decided that he'd do computers and Python on Tuesdays (during the weekdays). I, as a parent, (almost) hate homework (but that's a topic for the other day) and he unfortunately has to complete it, that's why we decided on Tuesday.
+
+He's zoomed past the initial chapters and is now doing basic loops. I think he gets the idea. One problem he faced was with this simple program that I asked him to write:
+
+> Write a program to print the digits of a given number, one by one, starting with the unit place.
+
+I think he was trying hard to 'extract' the digits from the number and finally understood how to do it, but there again, I realized how abstract the concept of 'place-value system' really is. Most of the kids (and perhaps adults) do not get that idea however 'taken for granted' it is.
+
+The other program he stumbled with was:
+
+> Write a program to convert the given decimal number into its binary representation.
+
+The reason again, was the lack of understanding of the place-value system.
+
+I think I should cover these things in an introductory programming book. Although I understand that children are ebullient by nature and have (very) short attention spans, we need to be able to explain to them that hard problems are just hard and that we may sometimes take hours, days, weeks ... to solve them in a way that we understand the problem solving process. I need to develop some technical literary skills (remembering late Richard Stevens!) to explain lucidly difficult-at-first concepts to young minds. A balance is needed. But this book is going through the syntactical part of the programming language and working well on making the child learn the 'programming ecosystem', leaving the algorithmic joy aside. Perhaps there's a room for improvement ...
+
+OK, the current status is he's eager to get to the chapter 10 of the book. I give it to the authors that their style rather feeds and enhances my son's curiosity. 
+
