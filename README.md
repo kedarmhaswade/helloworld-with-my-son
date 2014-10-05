@@ -64,3 +64,21 @@ I think I should cover these things in an introductory programming book. Althoug
 
 OK, the current status is he's eager to get to the chapter 10 of the book. I give it to the authors that their style rather feeds and enhances my son's curiosity. 
 
+## Day 13: September 28, 2014
+
+Children love graphics. Everybody knows. Well, adults love graphics (secretly) too. So, now, he installed the pygame environment to start playing with sound and images. Images moving across the screen window gives an immense pleasure to a child; and it's quite understandable. One thing I observed was the ease with which he sailed through the installation problems. On that Linux box, he figured out that apt-get install is not having the sudo ritual. He understood that certain install.sh having 'apt-get install pygame' did not have sudo against it. Then I told him about the [xkcd-sandwich](http://xkcd.com/149/) reality and he appreciated that very much. It was nice to see the deftness with which he was manouvering the computer, installing packages, downloading images and so on. He finally downloaded the pygame, the qt bindings for it and then started playing with the graphics: drawing a circle, a semi-circle and so on. 
+
+The book therefore introduced the 'objects' and I thought that was rather too early. Understanding objects before really delving into functions is rather premature I thought. But I have to yet achieve the functional nirvana yet and hence I did not object to his introduction to objects :).
+
+## Day 14: October 04, 2014
+
+He was frustrated, almost crying, hell crying that his beach ball was not loading. I told him, that maybe the .py file and .png file were not finding each other. Then we moved the beachball.png from ~/Downloads to ~/python and then it loaded and he was happy. Simple pleasures make them happy. That's awesome. I wish I had that quality. 
+
+Then I continued with my exploring the possibility of inculcating the love for simple algorithms. Nothing seemed more attractive than the [FizzBuzz](http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/). He thought that the problem is rather too simple. His first attempt was not doing it right.
+I told him the importance of:
+1. reading the specifications correctly.
+2. relaxing before you start 'keying in', and perhaps trying the program first on a paper (this is one thing he seems to get now).
+3. debugging.
+
+On second attempt, after realizing that the condition '(num % 3 == 0 and num % 5 == 0)' should preceed the other two in an if-else clause, he was happy. I am glad he could 'get' the idea behind this simple problem. In my opinion, the FizzBuzz is still a decent test to catch confident programmers 'off-guard'.
+
