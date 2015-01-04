@@ -82,3 +82,11 @@ I told him the importance of:
 
 On second attempt, after realizing that the condition '(num % 3 == 0 and num % 5 == 0)' should preceed the other two in an if-else clause, he was happy. I am glad he could 'get' the idea behind this simple problem. In my opinion, the FizzBuzz is still a decent test to catch confident programmers 'off-guard'.
 
+## Day 15: January 04, 2015
+I tried to introduce the simple algorithm analysis technique. By now, he was getting more interested in JavaScript (which was a good thing!) and he wanted to learn Node. So we install Node and started writing simple programs. He picked up Flanagan's book. Perhaps he should have picked Marijn's Eloquent JS. I asked him a simple program to reverse an array. He came up with the algorithm to do it, but he used a second array. Then I asked him if it was possible to do it without using that second array. He tried hard but was rather upset that he was not able to do that. Then I asked if it was possible to traverse the array using two indices, one from start to end and other from the end to start. I deliberately introduced a bug when the indices ran the whole length of the array. He was observing and said that that would cause the swapping to go back to original order. That was a good observation!
+
+As a result we learned two things:
+1. It pays to do programs on whiteboard! He is usually very eager (like me) to key in the program in his computer. But slowly and surely he's getting into the habit of writing the program first on a whiteboard. 
+2. We did this little exercise of swapping two variables. I told him the parables where abstractions in computer science are based on everyday experiences (semaphores, pipelining etc.)
+
+I am looking for more challenging (yet simple) programming exercises ...
