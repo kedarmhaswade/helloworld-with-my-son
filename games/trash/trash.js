@@ -48,8 +48,12 @@ var card = function card(suit, rank) {
   };
 };
 var player = function player(name) {
-  var cards = []; // my cards
+  var cards = []; // my cards, all indexed
+  var cardPositions = []; // and their positions, 'up' or 'down'
   return {
+    deal: function deal(card) {
+      cards.push(card);
+    },
     play: function play() {
     },
     hasWon: function hasWon() {
@@ -70,9 +74,26 @@ var shuffle = function shuffle(n) {
   }
   return array;
 };
+// deals n cards from the cardIds and returns the remaining cardIds
+// cardIds.length may not be less than 2*n
+// returns the pickupPile
 var deal = function deal(player1, player2, cardIds, n) {
-  for (var i = 1; i <= n; i += 1) {
+  var i, pickupPile = [];
+  if (cardIds.length < (2 * n)) {
+    throw {
+      name: 'InvalidDeck',
+      message: 'Invalid cardIds array length -- required:(' + 2*n + '), found: (' + cardIds.length';
+    };
   }
+  for (i = 1; i <= n; i += 1) {
+    player1.deal(idToCard(cardIds.shift()));
+    player2.deal(idToCard(cardIds.shift()));
+  }
+  // form a pickupPile and return it
+  for (i = 0; i < cardIds.length; i += 1) {
+    pickupPile.push(idToCard(cardIds.shift());
+  }
+  return pickupPile;
 };
 // returns a game that has a pickupPile, a discardPile and two players
 // the caller can then start the game which continues till a player has won 
