@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Basic tests for trash</title>
+  <link rel="stylesheet" href="qunit.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="qunit.js"></script>
+  <script src="../trash.js"></script>
+  <script>
+    QUnit.test( "basic card to id transformation", function( assert ) {
+        var id = 1, c = card('spades', 1), tc = idToCard(id);
+        assert.equal( tc.suit(), c.suit(), "We expect suit to be spades" );
+        assert.equal( tc.rank(), c.rank(), "We expect rank to be ace (1)" );
+        id = 13;
+        c = card('spades', 13);
+        tc = idToCard(id);
+        assert.equal( tc.suit(), c.suit(), "We expect suit to be spades" );
+        assert.equal( tc.rank(), c.rank(), "We expect rank to be king (13)" );
+        id = 14;
+        c = card('hearts', 1);
+        tc = idToCard(id);
+        assert.equal( tc.suit(), c.suit(), "We expect suit to be hearts" );
+        assert.equal( tc.rank(), c.rank(), "We expect rank to be ace (1)" );
+        id = 26;
+        c = card('hearts', 13);
+        tc = idToCard(id);
+        assert.equal( tc.suit(), c.suit(), "We expect suit to be hearts" );
+        assert.equal( tc.rank(), c.rank(), "We expect rank to be king (13)" );
+        id = 27;
+        c = card('clubs', 1);
+        tc = idToCard(id);
+        assert.equal( tc.suit(), c.suit(), "We expect suit to be clubs" );
+        assert.equal( tc.rank(), c.rank(), "We expect rank to be ace (1)" );
+        id = 39;
+        c = card('clubs', 13);
+        tc = idToCard(id);
+        assert.equal( tc.suit(), c.suit(), "We expect suit to be clubs" );
+        assert.equal( tc.rank(), c.rank(), "We expect rank to be king (13)" );
+        id = 40;
+        c = card('diamonds', 1);
+        tc = idToCard(id);
+        assert.equal( tc.suit(), c.suit(), "We expect suit to be diamonds" );
+        assert.equal( tc.rank(), c.rank(), "We expect rank to be ace (1)" );
+        id = 52;
+        c = card('diamonds', 13);
+        tc = idToCard(id);
+        assert.equal( tc.suit(), c.suit(), "We expect suit to be diamonds" );
+        assert.equal( tc.rank(), c.rank(), "We expect rank to be king (13)" );
+    });
+    QUnit.test( "random card to id transformation", function( assert ) {
+        var id = 10, c = card('spades', 10), tc = idToCard(id);
+        assert.equal( tc.suit(), c.suit(), "We expect suit to be spades" );
+        assert.equal( tc.rank(), c.rank(), "We expect rank to be ten (10)" );
+        id = 25;
+        c = card('hearts', 12);
+        tc = idToCard(id);
+        assert.equal( tc.suit(), c.suit(), "We expect suit to be hearts" );
+        assert.equal( tc.rank(), c.rank(), "We expect rank to be queen (12)" );
+    });
+  </script>
+</body>
+</html>

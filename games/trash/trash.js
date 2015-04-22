@@ -8,10 +8,10 @@ var isValidRank = function isValidRank(rank) {
 };
 var flattener = {spades: 0, hearts: 1, clubs: 2, diamonds: 3};
 var unflattener = {0: 'spades', 1: 'hearts', 2: 'clubs', 3: 'diamonds'};
-var cardToId = function flatten(card) {
+var cardToId = function cardToId(card) {
   return flattener[card.suit()] * 13 + card.rank();
 };
-var idToCard = function unflatten(id) {
+var idToCard = function idToCard(id) {
   if (id < 1 || id > 52) {
     throw {
       name: 'RangeError',
@@ -118,10 +118,10 @@ var game = function game(name1, name2) {
     }
   };
 };
-(function printAll() {
-  for (var i = 1; i <= 52; i += 1) {
-    console.log(idToCard(i).toString());
-  }
-})();
+//(function printAll() {
+//  for (var i = 1; i <= 52; i += 1) {
+//    console.log(idToCard(i).toString());
+//  }
+//})();
 //game().begin();
 
