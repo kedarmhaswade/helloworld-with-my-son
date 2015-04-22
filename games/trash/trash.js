@@ -82,7 +82,7 @@ var deal = function deal(player1, player2, cardIds, n) {
   if (cardIds.length < (2 * n)) {
     throw {
       name: 'InvalidDeck',
-      message: 'Invalid cardIds array length -- required:(' + 2*n + '), found: (' + cardIds.length';
+      message: 'Invalid cardIds array length -- required:(' + 2*n + '), found: (' + cardIds.length + ')'
     };
   }
   for (i = 1; i <= n; i += 1) {
@@ -91,7 +91,7 @@ var deal = function deal(player1, player2, cardIds, n) {
   }
   // form a pickupPile and return it
   for (i = 0; i < cardIds.length; i += 1) {
-    pickupPile.push(idToCard(cardIds.shift());
+    pickupPile.push(idToCard(cardIds.shift()));
   }
   return pickupPile;
 };
@@ -100,16 +100,16 @@ var deal = function deal(player1, player2, cardIds, n) {
 // players take turn
 // the game starts in a non-won state and a player can win after her/his turn
 var game = function game(name1, name2) {
-  var player1, player2, current_player, seq;
+  var player1, player2, current_player, shuffled, pickupPile, discardPile = [];
   return {
     begin: function begin() {
       shuffled = shuffle(52);
       player1 = player(name1);
       player2 = player(name2);
-      deal(player1, player2, shuffled, 10);
+      pickupPile = deal(player1, player2, shuffled, 10);
       current_player = player1;
       while (true) {
-        current_player.play();
+        current_player.play(pickupPile, discardPile);
         if (current_player.hasWon()) {
           return current_player;
         }
