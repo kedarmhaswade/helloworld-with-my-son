@@ -12,7 +12,7 @@ var cardToId = function cardToId(card) {
   return flattener[card.suit()] * 13 + card.rank();
 };
 var idToCard = function idToCard(id) {
-  if (id < 1 || id > 52) {
+  if (typeof id !== 'number' || id < 1 || id > 52) {
     throw {
       name: 'RangeError',
       message: 'id: ' + id + ' not in the range: [1, 52]'
