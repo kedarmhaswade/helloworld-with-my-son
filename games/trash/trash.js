@@ -80,8 +80,16 @@ var player = function player(name) {
         };
       }
     },
+    // given the state of the game, performs a turn of a player.
+    // a turn may comprise of several 'moves'.
     autoPlay: function autoPlay() {
-      throw {name: "NYI"};
+      while (!movePossible()) {
+        this.make(bestMove());
+      }
+    },
+    bestMove: function () {
+    },
+    movePossible: function () {
     },
     make: function make(move) {
       throw {name: "NYI"};
