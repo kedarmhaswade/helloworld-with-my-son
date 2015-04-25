@@ -11,7 +11,7 @@
   <script src="qunit-1.18.0.js"></script>
   <script src="../trash.js"></script>
   <script>
-    QUnit.test( "basic card to id transformation", function( assert ) {
+    QUnit.test("basic card to id transformation", function( assert ) {
         var id = 1, c = card('spades', 1), tc = idToCard(id);
         assert.equal( tc.suit(), c.suit(), "We expect suit to be spades" );
         assert.equal( tc.rank(), c.rank(), "We expect rank to be ace (1)" );
@@ -51,7 +51,7 @@
         assert.equal( tc.suit(), c.suit(), "We expect suit to be diamonds" );
         assert.equal( tc.rank(), c.rank(), "We expect rank to be king (13)" );
     });
-    QUnit.test( "random card to id transformation", function( assert ) {
+    QUnit.test("random card to id transformation", function( assert ) {
         var id = 10, c = card('spades', 10), tc = idToCard(id);
         assert.equal( tc.suit(), c.suit(), "We expect suit to be spades" );
         assert.equal( tc.rank(), c.rank(), "We expect rank to be ten (10)" );
@@ -60,6 +60,29 @@
         tc = idToCard(id);
         assert.equal( tc.suit(), c.suit(), "We expect suit to be hearts" );
         assert.equal( tc.rank(), c.rank(), "We expect rank to be queen (12)" );
+    });
+    QUnit.test("deal seems to work", function( assert ) {
+      var player1, player2, pickupPile, discardPile=[], shuffled = shuffle(52);
+      player1 = player("foo");
+      player2 = player("bar");
+      deal(player1, player2, shuffled, 10, discardPile);
+      assert.equal(player2.getPickupPileSize(), 32, "We expect 32 cards in the pickup pile");
+      assert.equal(player1.getPickupPileSize(), 32, "We expect 32 cards in the pickup pile");
+      assert.equal(player1.getNumberOfCards(), 10, "We expect player1 to have 10 cards");
+      assert.equal(player2.getNumberOfCards(), 10, "We expect player2 to have 10 cards");
+      assert.equal(player1.getNumberOfCards(), 10, "We expect player1 to have 10 cards");
+      assert.equal(player2.getNumberOfCards(), 10, "We expect player2 to have 10 cards");
+      assert.equal(player1.getNumberOfCardsFaceUp(), 0, "We expect player1 to have 0 cards face up");
+      assert.equal(player2.getNumberOfCardsFaceUp(), 0, "We expect player2 to have 0 cards face up");
+      assert.notOk(player1.hasWon(), "We just started, player1 has not won!");
+      assert.notOk(player2.hasWon(), "We just started, player2 has not won!");
+    });
+    QUnit.test("player's piles can be set once", function( assert ) {
+      var player1 = player("foo");
+      player1.setPiles([], []);
+      assert.throws(function() {
+        player1.setPiles([], []);
+      });
     });
   </script>
 </body>
