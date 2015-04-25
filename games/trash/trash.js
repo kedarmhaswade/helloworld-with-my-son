@@ -1,3 +1,4 @@
+"use strict";
 // A Game of Trash
 // suit: one of 'spades', 'hearts', 'diamonds', 'clubs'
 var isValidSuit = function isValidSuit(suit) {
@@ -14,14 +15,14 @@ var cardToId = function cardToId(card) {
 };
 // returns a card from a standard deck of 52 cards
 var card = function card(suit, rank) {
-  var s = suit, r = rank; 
-  if (! isValidSuit(s)) {
+  var s = suit, r = rank;
+  if (!isValidSuit(s)) {
     throw {
       name: 'TypeError',
       message: 'suit: ' + s + ' is invalid'
     };
   }
-  if (! isValidRank(r)) {
+  if (!isValidRank(r)) {
     throw {
       name: 'TypeError',
       message: 'rank: ' + r + ' is invalid'
@@ -49,46 +50,55 @@ var idToCard = function idToCard(id) {
       message: 'id: ' + id + ' not in the range: [1, 52]'
     };
   }
-  quo = parseInt(id/13);
+  quo = parseInt(id / 13, 10);
   rem = id % 13;
   return card(unflattener[rem === 0 ? quo - 1 : quo], rem === 0 ? rem + 13 : rem);
 };
 // returns a player
 var player = function player(name) {
   var cards = [], // my cards, all indexed
-      cardPositions = [], // and their positions, 'up' or 'down'
-      pickupPile, discardPile, setOnce = false;
+    cardPositions = [], // and their positions, 'up' or 'down'
+    pickupPile,
+    discardPile,
+    setOnce = false;
   return {
-    getName: function() {
+    getName: function () {
       return name;
     },
     deal: function deal(card) {
       cards.push(card);
     },
-    setPiles: function(p, d) {
+    setPiles: function (p, d) {
       if (!setOnce) {
         pickupPile = p;
         discardPile = d;
         setOnce = true;
       } else {
         throw {
-          type: 'AlreadySetError',
+          name: 'AlreadySetError',
           message: 'Piles were already set before for: ' + this.getName()
         };
       }
     },
     autoPlay: function autoPlay() {
+      throw {name: "NYI"};
+    },
+    make: function make(move) {
+      throw {name: "NYI"};
     },
     hasWon: function hasWon() {
       return cardPositions.length === cards.length;
     },
-    getPickupPileSize: function() {
+    getPickupPileSize: function () {
       return pickupPile.length;
     },
-    getNumberOfCards: function() {
+    getDiscardPileSize: function () {
+      return discardPile.length;
+    },
+    getNumberOfCards: function () {
       return cards.length;
     },
-    getNumberOfCardsFaceUp: function() {
+    getNumberOfCardsFaceUp: function () {
       return cardPositions.length;
     }
   };
@@ -100,7 +110,7 @@ var shuffle = function shuffle(n) {
     array[i] = i + 1;
   }
   // Fisher-Yates
-  for (i = array.length - 1; i > 0; i--) {
+  for (i = array.length - 1; i > 0; i -= 1) {
     j = Math.floor(Math.random() * (i + 1));
     temp = array[i];
     array[i] = array[j];
@@ -116,7 +126,7 @@ var deal = function deal(player1, player2, cardIds, n, discardPile) {
   if (cardIds.length < (2 * n)) {
     throw {
       name: 'InvalidDeck',
-      message: 'Invalid cardIds array length -- required:(' + 2*n + '), found: (' + cardIds.length + ')'
+      message: 'Invalid cardIds array length -- required:(' + 2 * n + '), found: (' + cardIds.length + ')'
     };
   }
   for (i = 1; i <= n; i += 1) {
