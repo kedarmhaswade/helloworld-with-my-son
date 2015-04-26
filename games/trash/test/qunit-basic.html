@@ -11,6 +11,14 @@
   <script src="qunit-1.18.0.js"></script>
   <script src="../trash.js"></script>
   <script>
+    QUnit.test("array.indexOf(predicate) seems to work", function( assert ) {
+        var array = [1, 2, "string"];
+        var indexOfString = array.indexOf(function (v) {
+            return typeof v === 'string';
+          }
+        );
+        assert.equal(2, indexOfString);
+    });
     QUnit.test("basic card to id transformation", function( assert ) {
         var id = 1, c = card('spades', 1), tc = idToCard(id);
         assert.equal( tc.suit(), c.suit(), "We expect suit to be spades" );
@@ -65,7 +73,7 @@
       var player1, player2, pickupPile, discardPile=[], shuffled = shuffle(52);
       player1 = player("foo");
       player2 = player("bar");
-      deal(player1, player2, shuffled, 10, discardPile);
+      deal([player1, player2], shuffled, 10, discardPile);
       assert.equal(player2.getPickupPileSize(), 32, "We expect 32 cards in the pickup pile");
       assert.equal(player1.getPickupPileSize(), 32, "We expect 32 cards in the pickup pile");
       assert.equal(player1.getNumberOfCards(), 10, "We expect player1 to have 10 cards");

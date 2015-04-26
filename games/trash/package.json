@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "jslint --indent 2",
-    "test": "node-qunit-phantomjs test/qunit-basic.html"
+    "test": "jslint --indent 2 trash.js; node-qunit-phantomjs test/qunit-basic.html"
   },
   "keywords": [
     "trash"

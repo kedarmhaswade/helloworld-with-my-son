@@ -1,4 +1,14 @@
 "use strict";
+// returns index of the first element of the array for which the given predicate is true
+Array.prototype.indexOf = function (predicate) {
+  var i;
+  for (i = 0; i < this.length; i += 1) {
+    if (predicate(this[i])) {
+      return i;
+    }
+  }
+  // returns undefined, predicate is false for all elements
+};
 // A Game of Trash
 // suit: one of 'spades', 'hearts', 'diamonds', 'clubs'
 var isValidSuit = function isValidSuit(suit) {
@@ -80,16 +90,24 @@ var player = function player(name) {
         };
       }
     },
-    // given the state of the game, performs a turn of a player.
-    // a turn may comprise of several 'moves'.
-    autoPlay: function autoPlay() {
-      while (!movePossible()) {
-        this.make(bestMove());
+    isMovePossible: function () {
+      var kingIsFaceUp;
+      kingIsFaceUp = cardPositions.indexOf(function (cardPos) {
+        return cards[cardPos].isRank(13);
+      });
+      if (kingIsFaceUp) {
+        return true;
       }
     },
     bestMove: function () {
+      throw {};
     },
-    movePossible: function () {
+    // given the state of the game, performs a turn of a player.
+    // a turn may comprise of several 'moves'.
+    autoPlay: function autoPlay() {
+      while (!this.hasWon() && this.isMovePossible()) {
+        this.make(this.bestMove());
+      }
     },
     make: function make(move) {
       throw {name: "NYI"};
@@ -129,24 +147,28 @@ var shuffle = function shuffle(n) {
 // deals n cards from the cardIds and returns the remaining cardIds
 // cardIds.length may not be less than 2*n
 // returns the pickupPile
-var deal = function deal(player1, player2, cardIds, n, discardPile) {
-  var i, pickupPile = [];
-  if (cardIds.length < (2 * n)) {
+var deal = function deal(players, cardIds, n, discardPile) {
+  var i, pickupPile = [], dealOneCard;
+  if (cardIds.length < (players.length * n)) {
     throw {
       name: 'InvalidDeck',
       message: 'Invalid cardIds array length -- required:(' + 2 * n + '), found: (' + cardIds.length + ')'
     };
   }
+  dealOneCard = function (player) {
+    player.deal(idToCard(cardIds.shift()));
+  };
+  //deal a card to each player one by one
   for (i = 1; i <= n; i += 1) {
-    player1.deal(idToCard(cardIds.shift()));
-    player2.deal(idToCard(cardIds.shift()));
+    players.forEach(dealOneCard);
   }
   // form a pickupPile and return it
   for (i = 0; i < cardIds.length; i += 1) {
     pickupPile.push(idToCard(cardIds[i]));
   }
-  player1.setPiles(pickupPile, discardPile);
-  player2.setPiles(pickupPile, discardPile);
+  players.forEach(function (player) {
+    player.setPiles(pickupPile, discardPile);
+  });
   return pickupPile;
 };
 // returns a game that has a pickupPile, a discardPile and two players
@@ -160,7 +182,7 @@ var game = function game(name1, name2) {
       shuffled = shuffle(52);
       player1 = player(name1);
       player2 = player(name2);
-      pickupPile = deal(player1, player2, shuffled, 10, discardPile);
+      pickupPile = deal([player1, player2], shuffled, 10, discardPile);
       current_player = player1;
       while (true) {
         current_player.play(pickupPile, discardPile);
