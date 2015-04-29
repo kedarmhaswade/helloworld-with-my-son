@@ -129,60 +129,69 @@ var player = function player(name) {
     }
   };
 };
-// a function to simulate shuffling of cards
-var shuffle = function shuffle(n) {
-  var i, j, temp, array = [];
-  for (i = 0; i < n; i += 1) {
-    array[i] = i + 1;
+var deck = function (from, to) {
+  var i, d = [];
+  if (from > to) {
+    throw {
+      name: 'DeckError',
+      message: 'from: ' + from + ' is not smaller than to: ' + to
+    };
   }
-  // Fisher-Yates
-  for (i = array.length - 1; i > 0; i -= 1) {
-    j = Math.floor(Math.random() * (i + 1));
-    temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
+  for (i = from; i <= to; i += 1) {
+    d.push(idToCard(i));
   }
-  return array;
+  return d;
 };
-// deals n cards from the cardIds and returns the remaining cardIds
-// cardIds.length may not be less than 2*n
-// returns the pickupPile
-var deal = function deal(players, cardIds, n, discardPile) {
-  var i, pickupPile = [], dealOneCard;
-  if (cardIds.length < (players.length * n)) {
+var standardDeck = function () {
+  return deck(1, 52);
+};
+// a function to simulate shuffling of the given 'deck of cards'
+var shuffleDeck = function (deck) {
+  var i, j, temp;
+  // Fisher-Yates
+  for (i = deck.length - 1; i > 0; i -= 1) {
+    j = Math.floor(Math.random() * (i + 1));
+    temp = deck[i];
+    deck[i] = deck[j];
+    deck[j] = temp;
+  }
+};
+// deals n cards from the deck and returns the remaining deck
+// deck.length may not be less than players.length*n
+var deal = function deal(players, deck, n) {
+  var i, dealOneCard;
+  if (deck.length < (players.length * n)) {
     throw {
       name: 'InvalidDeck',
-      message: 'Invalid cardIds array length -- required:(' + 2 * n + '), found: (' + cardIds.length + ')'
+      message: 'Invalid deck length -- required:(' + players.length * n + '), found: (' + deck.length + ')'
     };
   }
   dealOneCard = function (player) {
-    player.deal(idToCard(cardIds.shift()));
+    player.deal(deck.shift());
   };
   //deal a card to each player one by one
   for (i = 1; i <= n; i += 1) {
     players.forEach(dealOneCard);
   }
-  // form a pickupPile and return it
-  for (i = 0; i < cardIds.length; i += 1) {
-    pickupPile.push(idToCard(cardIds[i]));
-  }
-  players.forEach(function (player) {
-    player.setPiles(pickupPile, discardPile);
-  });
-  return pickupPile;
+  return deck; // remaining deck
 };
 // returns a game that has a pickupPile, a discardPile and two players
 // the caller can then start the game which continues till a player has won 
 // players take turn
 // the game starts in a non-won state and a player can win after her/his turn
 var game = function game(name1, name2) {
-  var player1, player2, current_player, shuffled, pickupPile, discardPile = [];
+  var player1, player2, players, current_player, deck, pickupPile, discardPile = [];
   return {
     begin: function begin() {
-      shuffled = shuffle(52);
+      deck = standardDeck();
+      shuffleDeck(deck);
       player1 = player(name1);
       player2 = player(name2);
-      pickupPile = deal([player1, player2], shuffled, 10, discardPile);
+      players = [player1, player2];
+      pickupPile = deal(players, deck, 10); //deal 10 cards to each player
+      players.forEach(function (player) {
+        player.setPiles(pickupPile, discardPile);
+      });
       current_player = player1;
       while (true) {
         current_player.play(pickupPile, discardPile);

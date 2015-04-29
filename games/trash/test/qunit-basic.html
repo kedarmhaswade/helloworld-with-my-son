@@ -70,10 +70,15 @@
         assert.equal( tc.rank(), c.rank(), "We expect rank to be queen (12)" );
     });
     QUnit.test("deal seems to work", function( assert ) {
-      var player1, player2, pickupPile, discardPile=[], shuffled = shuffle(52);
+      var players, player1, player2, pickupPile, discardPile=[], deck = standardDeck();
+      shuffleDeck(deck);
       player1 = player("foo");
       player2 = player("bar");
-      deal([player1, player2], shuffled, 10, discardPile);
+      players = [player1, player2];
+      pickupPile = deal(players, deck, 10);
+      players.forEach(function (player) {
+        player.setPiles(pickupPile, discardPile);
+      });
       assert.equal(player2.getPickupPileSize(), 32, "We expect 32 cards in the pickup pile");
       assert.equal(player1.getPickupPileSize(), 32, "We expect 32 cards in the pickup pile");
       assert.equal(player1.getNumberOfCards(), 10, "We expect player1 to have 10 cards");
