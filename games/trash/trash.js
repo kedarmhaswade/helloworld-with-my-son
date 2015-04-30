@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 // returns index of the first element of the array for which the given predicate is true
 Array.prototype.indexOf = function (predicate) {
   var i;
   for (i = 0; i < this.length; i += 1) {
-    if (predicate(this[i])) {
+    if (predicate(this[i], i)) {
       return i;
     }
   }
@@ -92,6 +92,7 @@ var player = function player(name) {
     },
     isMovePossible: function () {
       var kingIsFaceUp;
+      //wrong, todo
       kingIsFaceUp = cardPositions.indexOf(function (cardPos) {
         return cards[cardPos].isRank(13);
       });

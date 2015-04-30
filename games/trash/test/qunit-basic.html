@@ -12,12 +12,27 @@
   <script src="../trash.js"></script>
   <script>
     QUnit.test("array.indexOf(predicate) seems to work", function( assert ) {
-        var array = [1, 2, "string"];
-        var indexOfString = array.indexOf(function (v) {
+        var isString = function (v) {
             return typeof v === 'string';
-          }
-        );
-        assert.equal(2, indexOfString);
+          }, 
+          array = [1, 2, "string"], 
+          isNumber = function (n) {
+            return typeof n === 'number';
+           },
+           isEven = function (n) {
+             return typeof n === 'number' && (n % 2) === 0; 
+           },
+           isOdd = function(n) {
+             return !isEven(n);
+           };
+        assert.equal(2, array.indexOf(isString));
+        assert.equal(0, array.indexOf(isNumber));
+        array = [2, 4];
+        assert.notOk(array.indexOf(isOdd));
+        assert.equal(0, array.indexOf(isEven));
+        array = [1, -1];
+        assert.notOk(array.indexOf(isEven));
+        assert.equal(0, array.indexOf(isOdd));
     });
     QUnit.test("basic card to id transformation", function( assert ) {
         var id = 1, c = card('spades', 1), tc = idToCard(id);
